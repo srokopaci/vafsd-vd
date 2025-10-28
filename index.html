@@ -100,7 +100,17 @@
     .logo-btn:hover { transform: scale(1.05); }
     .logo-obrazok { height: 5rem; width: auto; }
     .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--gray-800); transition: color 0.3s ease; }
-    .logo-btn:hover .logo-text { color: var(--orange-500); }
+
+    /* OPRAVA - Zmena farby loga len pri HOVER (na PC) alebo FOCUS (klávesnica) */
+    @media (hover: hover) {
+      .logo-btn:hover .logo-text {
+        color: var(--orange-500);
+      }
+    }
+    .logo-btn:focus-visible .logo-text {
+      color: var(--orange-500);
+    }
+
     .main-nav { display: none; }
     .main-nav a { color: var(--gray-600); transition: color 0.3s ease; }
     .main-nav a:hover { color: var(--orange-500); }
@@ -114,7 +124,7 @@
       color: var(--white);
       padding: 8rem 0;
     }
-    .hero-section .container { max-width: 48rem; }
+    .hero-section .container { max-width: 48rem; position: relative; z-index: 2; }
     .hero-section h1 { font-size: 3.75rem; font-weight: 700; margin-bottom: 1.5rem; animation: fade-in 1s ease-out; }
     .hero-section p { font-size: 1.25rem; color: var(--gray-200); margin-bottom: 2rem; }
     .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -137,7 +147,16 @@
     .hero-buttons .primary-btn svg,
     .hero-buttons .secondary-btn svg { width: 1.25rem; height: 1.25rem; }
 
-    .hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 8rem; background: linear-gradient(to top, var(--gray-50), transparent); pointer-events: none; }
+    .hero-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8rem;
+      background: linear-gradient(to top, var(--gray-50), transparent);
+      pointer-events: none; /* OPRAVA - Prepusť kliknutia */
+      z-index: 1;
+    }
 
     /* --- Services Section --- */
     .services-section { padding: 5rem 0; background-color: var(--white); }
@@ -394,7 +413,7 @@
                 <img src="ponuka-2.jpg" alt="Sklápač IVECO Daily">
               </figure>
               <h3>Sklápač IVECO Daily</h3>
-              <p>Možnosť odviezť až 3,5 tony. Lôžna plocha 300x200cm</p>
+              <p>Možnosť odviezť až 3,5 tony. Ložná plocha 300x200cm.</p>
             </div>
           </div>
         </div>
@@ -610,8 +629,3 @@
 </body>
 
 </html>
-
-
-
-
-
