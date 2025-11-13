@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sk" style="scroll-behavior: smooth;">
 <head>
@@ -186,6 +187,14 @@
 
     /* DVE POLIA POD "ČO PONÚKAME" – obrázok + popis */
     .extra-offers { margin-top: 2rem; }
+    /* UPRAVA: nadpis "Naše stroje" */
+    .extra-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--gray-800);
+    }
     .extra-grid { display: grid; gap: 1.5rem; }
     .extra-item {
       background-color: var(--gray-50);
@@ -220,6 +229,8 @@
     .feature-item:hover svg { transform: scale(1.1); }
     .feature-item span { color: var(--gray-700); transition: color 0.3s ease; }
     .feature-item:hover span { color: var(--gray-900); }
+
+    /* (stats-box CSS ponechaný, ale na stránke sa už nepoužíva) */
     .stats-box { background-color: var(--orange-500); border-radius: 1rem; padding: 2rem; color: var(--white); }
     .stats-box h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
     .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -410,6 +421,9 @@
 
         <!-- DVE POLIA S OBRÁZKAMI A POPISOM -->
         <div class="extra-offers">
+          <!-- UPRAVA: nadpis Naše stroje -->
+          <h3 class="extra-title">Naše stroje</h3>
+
           <div class="extra-grid">
             <div class="extra-item">
               <figure class="extra-figure">
@@ -459,19 +473,8 @@
               </div>
             </div>
           </div>
-          <div class="stats-box">
-            <h3>Naše čísla</h3>
-            <div class="stats-grid">
-              <div>
-                <div class="stat-value">50+</div>
-                <div class="stat-label">Dokončených projektov</div>
-              </div>
-              <div>
-                <div class="stat-value">98%</div>
-                <div class="stat-label">Spokojných klientov</div>
-              </div>
-            </div>
-          </div>
+
+          <!-- UPRAVA: box „Naše čísla“ bol odstránený -->
         </div>
       </div>
     </section>
@@ -667,7 +670,3 @@
   </script>
 </body>
 </html>
-
-
-
-
