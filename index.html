@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sk" style="scroll-behavior: smooth;">
 <head>
@@ -10,8 +9,8 @@
   <!-- PRIDANÉ: Ikona stránky (favicon) -->
   <link rel="icon" type="image/png" href="logo.png">
 
-  <!-- PRIDANÉ: Titulok stránky pre Google a kartu prehliadača -->
-<title>Zemné a výkopové práce Považká Bystrica a Púchov</title>
+  <!-- ZMENA: Titulok stránky pre Google a kartu prehliadača -->
+  <title>Zemné a výkopové práce Považská Bystrica</title>
 
 <!-- PRIDANÉ: Popis stránky pre výsledky vyhľadávania (Google) -->
 <meta name="description" content="Profesionálne zemné a výkopové práce v Považskej Bystrici a okolí. Realizujeme výkopy základov, terénne úpravy a prepravu materiálov. Kontaktujte nás pre nezáväznú cenovú ponuku.">
@@ -187,9 +186,8 @@
     .service-card h3 { font-size: 1.25rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.75rem; }
     .service-card p { color: var(--gray-600); }
 
-    /* DVE POLIA POD "ČO PONÚKAME" – obrázok + popis */
-    .extra-offers { margin-top: 2rem; }
-    /* UPRAVA: nadpis "Naše stroje" */
+    /* ZMENA: Zväčšená sekcia "Naše stroje" */
+    .extra-offers { margin-top: 4rem; } /* Väčší odstup zhora */
     .extra-title {
       text-align: center;
       font-size: 1.5rem;
@@ -197,16 +195,23 @@
       margin-bottom: 1.5rem;
       color: var(--gray-800);
     }
-    .extra-grid { display: grid; gap: 1.5rem; }
+    .extra-grid {
+      display: grid;
+      gap: 2rem; /* Väčšia medzera medzi položkami */
+      grid-template-columns: 1fr; /* Vždy len jeden stĺpec */
+      max-width: 42rem; /* Obmedzenie šírky, aby to nebolo príliš roztiahnuté */
+      margin-left: auto;
+      margin-right: auto;
+    }
     .extra-item {
       background-color: var(--gray-50);
       border-radius: 0.75rem;
-      padding: 1rem;
+      padding: 1.5rem; /* Viac vnútorného priestoru */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
     }
     .extra-item:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
     .extra-figure {
@@ -216,28 +221,38 @@
       overflow: hidden;
       background-color: var(--gray-100);
       display: block;
+      margin-bottom: 1rem;
     }
     .extra-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .extra-item h3 { margin-top: 0.75rem; font-size: 1.25rem; font-weight: 600; color: var(--gray-800); }
-    .extra-item p { color: var(--gray-600); margin-top: 0.25rem; }
+    .extra-item h3 { margin-top: 0.75rem; font-size: 1.5rem; font-weight: 600; color: var(--gray-800); } /* Väčší nadpis */
+    .extra-item p { color: var(--gray-600); margin-top: 0.5rem; font-size: 1.125rem; } /* Väčší text */
 
     /* --- Why Choose Us Section --- */
     .why-us-section { padding: 5rem 0; background-color: var(--gray-100); }
-    .why-us-grid { display: grid; gap: 3rem; align-items: center; }
-    .why-us-section h2 { font-size: 1.875rem; font-weight: 700; color: var(--gray-800); margin-bottom: 1.5rem; }
-    .features-list { display: flex; flex-direction: column; gap: 1rem; }
+    
+    /* ZMENA: Vycentrovaná sekcia "Prečo si vybrať nás" */
+    .why-us-grid {
+      display: block; /* Zmena z gridu na blok pre jednoduchšie centrovanie */
+      text-align: center;
+    }
+    .why-us-section h2 { 
+      font-size: 2.25rem; /* Zväčšený nadpis ako v ostatných sekciách */
+      font-weight: 700; 
+      color: var(--gray-800); 
+      margin-bottom: 2.5rem; /* Väčší odstup pod nadpisom */
+    }
+    .features-list {
+      display: inline-flex; /* Aby sa zoznam správal ako blok a dalo sa mu nastaviť text-align: left */
+      flex-direction: column;
+      gap: 1.25rem; /* Trochu väčšia medzera */
+      max-width: 100%;
+      text-align: left; /* Zarovnanie textu v položkách doľava */
+    }
     .feature-item { display: flex; align-items: flex-start; }
-    .feature-item svg { width: 1.5rem; height: 1.5rem; color: var(--green-500); margin-right: 0.75rem; margin-top: 0.25rem; flex-shrink: 0; transition: transform 0.3s ease; }
+    .feature-item svg { width: 1.5rem; height: 1.5rem; color: var(--green-500); margin-right: 1rem; margin-top: 0.25rem; flex-shrink: 0; transition: transform 0.3s ease; }
     .feature-item:hover svg { transform: scale(1.1); }
-    .feature-item span { color: var(--gray-700); transition: color 0.3s ease; }
+    .feature-item span { color: var(--gray-700); transition: color 0.3s ease; font-size: 1.125rem; } /* Trochu väčší text */
     .feature-item:hover span { color: var(--gray-900); }
-
-    /* (stats-box CSS ponechaný, ale na stránke sa už nepoužíva) */
-    .stats-box { background-color: var(--orange-500); border-radius: 1rem; padding: 2rem; color: var(--white); }
-    .stats-box h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
-    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .stats-grid .stat-value { font-size: 2.25rem; font-weight: 700; }
-    .stats-grid .stat-label { color: var(--orange-100); }
 
     /* --- Gallery Section --- */
     .gallery-section { padding: 5rem 0; background-color: var(--white); }
@@ -308,10 +323,9 @@
       .main-nav { display: flex; gap: 2rem; }
       .hero-section h1 { font-size: 3.75rem; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .extra-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-us-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: repeat(3, 1fr); }
+      /* ZMENA: .extra-grid a .why-us-grid už nemajú špeciálne pravidlá tu, lebo sú upravené vyššie */
     }
     @media (min-width: 1024px) {
       .services-grid { grid-template-columns: repeat(4, 1fr); }
@@ -332,6 +346,13 @@
       .gallery-grid,
       .contact-grid,
       .extra-grid { grid-template-columns: 1fr; }
+      
+      .extra-item { padding: 1rem; }
+      .extra-item h3 { font-size: 1.25rem; }
+      .extra-item p { font-size: 1rem; }
+
+      .why-us-section h2 { font-size: 1.875rem; margin-bottom: 2rem; }
+      .feature-item span { font-size: 1rem; }
 
       .gallery-item img { height: 12rem; }
 
@@ -370,7 +391,8 @@
   <main>
     <section class="hero-section">
       <div class="container">
-        <h1>Zemné a výkopové práce Považká Bystrica a okolie</h1>
+        <!-- ZMENA: Opravený preklep Považká -> Považská -->
+        <h1>Zemné a výkopové práce Považská Bystrica a okolie</h1>
         <p>Poskytujeme služby v oblasti zemných prác a výkopov. Spoľahlivé stroje, skúsená obsluha, férové ceny.</p>
         <div class="hero-buttons">
           <a href="#contact" class="primary-btn">
@@ -421,11 +443,9 @@
           </div>
         </div>
 
-        <!-- DVE POLIA S OBRÁZKAMI A POPISOM -->
+        <!-- ZMENA: Sekcia "Naše stroje" je väčšia a dominantnejšia -->
         <div class="extra-offers">
-          <!-- UPRAVA: nadpis Naše stroje -->
           <h3 class="extra-title">Naše stroje</h3>
-
           <div class="extra-grid">
             <div class="extra-item">
               <figure class="extra-figure">
@@ -443,12 +463,12 @@
             </div>
           </div>
         </div>
-        <!-- /DVE POLIA -->
       </div>
     </section>
 
     <section class="why-us-section">
       <div class="container">
+        <!-- ZMENA: Celá sekcia je vycentrovaná -->
         <div class="why-us-grid">
           <div>
             <h2>Prečo si vybrať práve nás?</h2>
@@ -475,8 +495,6 @@
               </div>
             </div>
           </div>
-
-          <!-- UPRAVA: box „Naše čísla“ bol odstránený -->
         </div>
       </div>
     </section>
@@ -672,4 +690,3 @@
   </script>
 </body>
 </html>
-
