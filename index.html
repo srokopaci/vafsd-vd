@@ -113,7 +113,6 @@
     .logo-obrazok { height: 5rem; width: auto; }
     .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--gray-800); transition: color 0.3s ease; }
 
-    /* OPRAVA - Zmena farby loga len pri HOVER (na PC) alebo FOCUS (klávesnica) */
     @media (hover: hover) {
       .logo-btn:hover .logo-text {
         color: var(--orange-500);
@@ -141,7 +140,6 @@
     .hero-section p { font-size: 1.25rem; color: var(--gray-200); margin-bottom: 2rem; }
     .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
 
-    /* Tlačidlá */
     .hero-buttons .primary-btn,
     .hero-buttons .secondary-btn {
       background-color: var(--orange-500);
@@ -166,7 +164,7 @@
       right: 0;
       height: 8rem;
       background: linear-gradient(to top, var(--gray-50), transparent);
-      pointer-events: none; /* OPRAVA - Prepusť kliknutia */
+      pointer-events: none;
       z-index: 1;
     }
 
@@ -186,32 +184,29 @@
     .service-card h3 { font-size: 1.25rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.75rem; }
     .service-card p { color: var(--gray-600); }
 
-    /* ZMENA: Zväčšená sekcia "Naše stroje" */
-    .extra-offers { margin-top: 4rem; } /* Väčší odstup zhora */
+    /* DVE POLIA POD "ČO PONÚKAME" – obrázok + popis */
+    .extra-offers { margin-top: 4rem; }
+    
+    /* ZMENA: Dvojnásobne zväčšený nadpis "Naše stroje" */
     .extra-title {
       text-align: center;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
+      font-size: 3rem; /* Zväčšené z 1.5rem */
+      font-weight: 700;
+      margin-bottom: 2.5rem; /* Väčší odstup pod nadpisom */
       color: var(--gray-800);
     }
-    .extra-grid {
-      display: grid;
-      gap: 2rem; /* Väčšia medzera medzi položkami */
-      grid-template-columns: 1fr; /* Vždy len jeden stĺpec */
-      max-width: 42rem; /* Obmedzenie šírky, aby to nebolo príliš roztiahnuté */
-      margin-left: auto;
-      margin-right: auto;
-    }
+    
+    /* ZMENA: Pôvodné rozloženie strojov (fotiek) je obnovené */
+    .extra-grid { display: grid; gap: 1.5rem; }
     .extra-item {
       background-color: var(--gray-50);
       border-radius: 0.75rem;
-      padding: 1.5rem; /* Viac vnútorného priestoru */
+      padding: 1rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
     }
     .extra-item:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
     .extra-figure {
@@ -221,37 +216,36 @@
       overflow: hidden;
       background-color: var(--gray-100);
       display: block;
-      margin-bottom: 1rem;
     }
     .extra-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .extra-item h3 { margin-top: 0.75rem; font-size: 1.5rem; font-weight: 600; color: var(--gray-800); } /* Väčší nadpis */
-    .extra-item p { color: var(--gray-600); margin-top: 0.5rem; font-size: 1.125rem; } /* Väčší text */
+    .extra-item h3 { margin-top: 0.75rem; font-size: 1.25rem; font-weight: 600; color: var(--gray-800); }
+    .extra-item p { color: var(--gray-600); margin-top: 0.25rem; }
 
     /* --- Why Choose Us Section --- */
     .why-us-section { padding: 5rem 0; background-color: var(--gray-100); }
     
     /* ZMENA: Vycentrovaná sekcia "Prečo si vybrať nás" */
     .why-us-grid {
-      display: block; /* Zmena z gridu na blok pre jednoduchšie centrovanie */
+      display: block;
       text-align: center;
     }
     .why-us-section h2 { 
-      font-size: 2.25rem; /* Zväčšený nadpis ako v ostatných sekciách */
+      font-size: 2.25rem;
       font-weight: 700; 
       color: var(--gray-800); 
-      margin-bottom: 2.5rem; /* Väčší odstup pod nadpisom */
+      margin-bottom: 2.5rem;
     }
     .features-list {
-      display: inline-flex; /* Aby sa zoznam správal ako blok a dalo sa mu nastaviť text-align: left */
+      display: inline-flex;
       flex-direction: column;
-      gap: 1.25rem; /* Trochu väčšia medzera */
+      gap: 1.25rem;
       max-width: 100%;
-      text-align: left; /* Zarovnanie textu v položkách doľava */
+      text-align: left;
     }
     .feature-item { display: flex; align-items: flex-start; }
     .feature-item svg { width: 1.5rem; height: 1.5rem; color: var(--green-500); margin-right: 1rem; margin-top: 0.25rem; flex-shrink: 0; transition: transform 0.3s ease; }
     .feature-item:hover svg { transform: scale(1.1); }
-    .feature-item span { color: var(--gray-700); transition: color 0.3s ease; font-size: 1.125rem; } /* Trochu väčší text */
+    .feature-item span { color: var(--gray-700); transition: color 0.3s ease; font-size: 1.125rem; }
     .feature-item:hover span { color: var(--gray-900); }
 
     /* --- Gallery Section --- */
@@ -299,7 +293,7 @@
     .map-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: .5rem; color: var(--orange-500); text-decoration: underline; }
     .map-link:hover { color: var(--orange-600); }
 
-    /* Plávajúce CALL tlačidlo – default skryté (zobrazíme len na mobile) */
+    /* Plávajúce CALL tlačidlo */
     .call-fab {
       position: fixed;
       right: 16px;
@@ -323,9 +317,9 @@
       .main-nav { display: flex; gap: 2rem; }
       .hero-section h1 { font-size: 3.75rem; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .extra-grid { grid-template-columns: repeat(2, 1fr); } /* Obnovené pravidlo pre 2 stĺpce */
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: repeat(3, 1fr); }
-      /* ZMENA: .extra-grid a .why-us-grid už nemajú špeciálne pravidlá tu, lebo sú upravené vyššie */
     }
     @media (min-width: 1024px) {
       .services-grid { grid-template-columns: repeat(4, 1fr); }
@@ -347,21 +341,20 @@
       .contact-grid,
       .extra-grid { grid-template-columns: 1fr; }
       
-      .extra-item { padding: 1rem; }
-      .extra-item h3 { font-size: 1.25rem; }
-      .extra-item p { font-size: 1rem; }
-
+      /* ZMENA: úprava veľkosti nadpisu "Naše stroje" pre mobil */
+      .extra-title {
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
+      }
+      
       .why-us-section h2 { font-size: 1.875rem; margin-bottom: 2rem; }
       .feature-item span { font-size: 1rem; }
 
       .gallery-item img { height: 12rem; }
-
       .contact-icon-wrapper { width: 3.5rem; height: 3.5rem; }
-
-      .call-fab { display: flex; } /* ukáž Call tlačidlo len na mobile */
+      .call-fab { display: flex; }
     }
 
-    /* Vypnúť hover animácie na dotykových zariadeniach */
     @media (hover: none) {
       .social-icon-link:hover { transform: none; }
       .service-card:hover { transform: none; box-shadow: none; }
@@ -391,7 +384,6 @@
   <main>
     <section class="hero-section">
       <div class="container">
-        <!-- ZMENA: Opravený preklep Považká -> Považská -->
         <h1>Zemné a výkopové práce Považská Bystrica a okolie</h1>
         <p>Poskytujeme služby v oblasti zemných prác a výkopov. Spoľahlivé stroje, skúsená obsluha, férové ceny.</p>
         <div class="hero-buttons">
@@ -443,9 +435,9 @@
           </div>
         </div>
 
-        <!-- ZMENA: Sekcia "Naše stroje" je väčšia a dominantnejšia -->
         <div class="extra-offers">
           <h3 class="extra-title">Naše stroje</h3>
+
           <div class="extra-grid">
             <div class="extra-item">
               <figure class="extra-figure">
@@ -468,7 +460,6 @@
 
     <section class="why-us-section">
       <div class="container">
-        <!-- ZMENA: Celá sekcia je vycentrovaná -->
         <div class="why-us-grid">
           <div>
             <h2>Prečo si vybrať práve nás?</h2>
@@ -660,16 +651,13 @@
     </div>
   </footer>
 
-  <!-- PRIDANÉ: JavaScript pre plynulé scrollovanie bez # v URL -->
   <script>
-    // Plynulé scrollovanie bez zmeny URL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Zastaví predvolenú akciu (pridanie # do URL)
+        e.preventDefault(); 
 
         const targetId = this.getAttribute('href');
         
-        // Ak je odkaz len '#', scrolluj na vrch stránky
         if (targetId === '#') {
           window.scrollTo({
             top: 0,
@@ -682,7 +670,7 @@
 
         if (targetElement) {
           targetElement.scrollIntoView({
-            behavior: 'smooth' // Zabezpečí plynulé scrollovanie
+            behavior: 'smooth'
           });
         }
       });
