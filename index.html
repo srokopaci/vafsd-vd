@@ -139,17 +139,51 @@
     .contact-item h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
     .contact-item p, .contact-item a { color: var(--gray-400); }
     .working-hours { margin-top: 3rem; text-align: center; display: flex; align-items: center; justify-content: center; color: var(--gray-400); }
-    .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
-    .social-icon-link { color: var(--gray-400); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+    
+    /* --- Social Icons Fix (Oprava) --- */
+    .social-icons { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+    
+    /* Zakladny styl pre social ikony */
+    .social-icon-link { 
+      color: var(--gray-400); 
+      width: 28px; 
+      height: 28px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
     .social-icon-link:hover { color: var(--white); transform: scale(1.15); }
-    .map-embed { margin-top: 1rem; width: 100%; aspect-ratio: 16 / 9; border-radius: 0.75rem; overflow: hidden; }
-    .map-embed iframe { width: 100%; height: 100%; border: 0; }
+    
+    /* SVG pre social ikony */
+    .social-icon-link svg { width: 100%; height: 100%; }
 
-    /* TikTok Swap */
-    .social-icon-link.tiktok-swap { position: relative; }
-    .social-icon-link.tiktok-swap .img-hover { display: none; position: absolute; inset: 0; width: 100%; height: 100%; }
+    /* TikTok Specific Styles (Opravené proti lagovaniu) */
+    .social-icon-link.tiktok-swap {
+      position: relative;
+      width: 28px;      /* Pevná šírka */
+      height: 28px;     /* Pevná výška */
+      overflow: hidden; /* Zabezpečí, aby nič nevyliezlo von */
+    }
+    
+    .social-icon-link.tiktok-swap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    
+    /* Logika výmeny obrázkov */
+    .social-icon-link.tiktok-swap .img-hover { display: none; }
     .social-icon-link.tiktok-swap:hover .img-default { display: none; }
     .social-icon-link.tiktok-swap:hover .img-hover { display: block; }
+
+
+    .map-embed { margin-top: 1rem; width: 100%; aspect-ratio: 16 / 9; border-radius: 0.75rem; overflow: hidden; }
+    .map-embed iframe { width: 100%; height: 100%; border: 0; }
 
     .footer { background-color: var(--gray-950); color: var(--gray-400); padding: 2rem 0; text-align: center; }
     
@@ -170,7 +204,7 @@
       .desktop-only { display: none; }
       .mobile-only { display: block; }
       .hero-section h1 { font-size: 2rem; }
-      .gallery-preview-grid { grid-template-columns: 1fr; } /* Na mobile 1 stĺpec */
+      .gallery-preview-grid { grid-template-columns: 1fr; } 
       .call-fab { display: flex; }
     }
   </style>
@@ -186,7 +220,6 @@
         </a>
         <nav class="main-nav">
           <a href="#services">Služby</a>
-          <!-- ZMENA: Odkaz priamo na galeria.html -->
           <a href="galeria.html">Galéria</a>
           <a href="#contact">Kontakt</a>
         </nav>
@@ -205,7 +238,6 @@
             Nezáväzná cenová ponuka
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
-          <!-- ZMENA: Tlačidlo smeruje na galériu -->
           <a href="galeria.html" class="secondary-btn">Naše referencie</a>
         </div>
       </div>
@@ -298,27 +330,25 @@
       </div>
     </section>
 
-    <!-- ZMENA: Toto je už len "Teaser" sekcia, ktorá láka na kliknutie -->
     <section class="gallery-preview-section">
       <div class="container">
         <div class="section-header">
           <h2>Naše práce</h2>
           <p>Pozrite si výber z našich realizácií.</p>
         </div>
-        <!-- Zobrazíme len 3 fotky ako ukážku, aby stránka nebola prázdna -->
+        <!-- ZMENA: Tu sú teraz tie druhé 3 fotky (akcia, projekt, presny) -->
         <div class="gallery-preview-grid">
           <div class="gallery-item">
-            <img src="zaklady.jpg" alt="Výkop základov">
+            <img src="akcia.JPG" alt="Trhanie koreňov">
           </div>
           <div class="gallery-item">
-            <img src="rovnanie.jpg" alt="Rovnanie pozemku">
+            <img src="projekt.JPEG" alt="Základ plotu">
           </div>
           <div class="gallery-item">
-            <img src="teren.jpg" alt="Práca v teréne">
+            <img src="presny.JPEG" alt="Hĺbkové výkopy">
           </div>
         </div>
         
-        <!-- Tlačidlo, ktoré otvorí galeria.html -->
         <a href="galeria.html" class="view-all-btn">
           Zobraziť celú galériu
         </a>
@@ -384,6 +414,7 @@
           <a href="https://www.instagram.com/kopaciii/" target="_blank" class="social-icon-link">
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
           </a>
+          <!-- Opravený TikTok odkaz, ktorý nebude robiť problémy -->
           <a href="https://www.tiktok.com/@kopaciii" target="_blank" class="social-icon-link tiktok-swap">
             <img src="tiktok.png" alt="TikTok" class="img-default">
             <img src="tiktik.png" alt="TikTok Hover" class="img-hover">
@@ -407,7 +438,6 @@
   </footer>
 
   <script>
-    /* Jednoduchý script na scroll ak je to id na rovnakej strane */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault(); 
