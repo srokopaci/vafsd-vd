@@ -73,7 +73,7 @@
       top: 0;
       width: 100%; 
       height: 100%; 
-      background-color: rgba(0, 0, 0, 0.95); /* Tmavšie pozadie */
+      background-color: rgba(0, 0, 0, 0.95); 
       align-items: center;
       justify-content: center;
       backdrop-filter: blur(5px);
@@ -86,6 +86,9 @@
       border-radius: 5px;
       box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
       animation: zoomIn 0.3s ease-out;
+      /* Zakážeme predvolené správanie pre drag obrázkov, aby fungoval swipe */
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     @keyframes zoomIn {
@@ -111,7 +114,7 @@
     }
     .close-btn:hover { background: rgba(255,255,255,0.2); }
 
-    /* ŠÍPKY (PREV / NEXT) */
+    /* ŠÍPKY */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -126,23 +129,13 @@
       border-radius: 0 3px 3px 0;
       user-select: none;
       z-index: 1002;
-      background-color: rgba(0, 0, 0, 0.3); /* Jemné pozadie */
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-    .prev {
-      left: 0;
-      border-radius: 0 3px 3px 0;
-    }
+    .next { right: 0; border-radius: 3px 0 0 3px; }
+    .prev { left: 0; border-radius: 0 3px 3px 0; }
+    .prev:hover, .next:hover { background-color: rgba(249, 115, 22, 0.8); }
 
-    .prev:hover, .next:hover {
-      background-color: rgba(249, 115, 22, 0.8); /* Oranžová pri hover */
-    }
-
-    /* Popis pod obrázkom */
     #caption {
       position: absolute;
       bottom: 20px;
@@ -163,7 +156,6 @@
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 767px) {
-       /* Na mobile posunieme šípky trochu nižšie alebo upravíme veľkosť */
        .prev, .next { font-size: 24px; padding: 12px; }
        .close-btn { top: 10px; right: 10px; font-size: 30px; width: 40px; height: 40px; }
     }
@@ -193,34 +185,28 @@
         <p>Kliknite na obrázok pre zväčšenie</p>
       </div>
 
-      <!-- Galéria -->
       <div class="gallery-grid">
-        <!-- Položka 1 -->
+        <!-- Tu sú tvoje fotky -->
         <div class="gallery-item">
           <img src="zaklady.jpg" alt="Výkop základov" loading="lazy">
           <div class="gallery-overlay"><span>Výkop základov</span></div>
         </div>
-        <!-- Položka 2 -->
         <div class="gallery-item">
           <img src="rovnanie.jpg" alt="Rovnanie pozemku" loading="lazy">
           <div class="gallery-overlay"><span>Rovnanie pozemku</span></div>
         </div>
-        <!-- Položka 3 -->
         <div class="gallery-item">
           <img src="teren.jpg" alt="Práca v teréne" loading="lazy">
           <div class="gallery-overlay"><span>Práca v teréne</span></div>
         </div>
-        <!-- Položka 4 -->
         <div class="gallery-item">
           <img src="akcia.JPG" alt="Trhanie koreňov" loading="lazy">
           <div class="gallery-overlay"><span>Trhanie koreňov</span></div>
         </div>
-        <!-- Položka 5 -->
         <div class="gallery-item">
           <img src="projekt.JPEG" alt="Základ plotu" loading="lazy">
           <div class="gallery-overlay"><span>Základ plotu</span></div>
         </div>
-        <!-- Položka 6 -->
         <div class="gallery-item">
           <img src="presny.JPEG" alt="Hĺbkové výkopy" loading="lazy">
           <div class="gallery-overlay"><span>Hĺbkové výkopy</span></div>
@@ -235,19 +221,15 @@
     </div>
   </footer>
 
-  <!-- MODAL (Lightbox) -->
+  <!-- MODAL -->
   <div id="imageModal" class="modal">
     <span class="close-btn" title="Zavrieť">&times;</span>
-    
-    <!-- Šípky -->
     <a class="prev" title="Predchádzajúci">&#10094;</a>
     <a class="next" title="Nasledujúci">&#10095;</a>
-
     <img class="modal-content" id="modalImg" alt="">
     <div id="caption"></div>
   </div>
 
-  <!-- SCRIPT PRE OTVÁRANIE FOTIEK A NAVIGÁCIU -->
   <script>
     // Premenné
     const modal = document.getElementById("imageModal");
@@ -256,75 +238,86 @@
     const closeBtn = document.querySelector(".close-btn");
     const prevBtn = document.querySelector(".prev");
     const nextBtn = document.querySelector(".next");
-    
-    // Všetky obrázky v galérii (NodeList)
     const galleryImages = document.querySelectorAll('.gallery-item img');
     
-    // Aktuálny index otvorenej fotky
     let currentIndex = 0;
 
-    // Funkcia na aktualizáciu modalu podľa indexu
+    // Funkcia pre update obrázka
     function updateModal(index) {
       if (index >= galleryImages.length) {
-        currentIndex = 0; // Ak sme na konci, skoč na začiatok
+        currentIndex = 0;
       } else if (index < 0) {
-        currentIndex = galleryImages.length - 1; // Ak sme na začiatku a dáme späť, skoč na koniec
+        currentIndex = galleryImages.length - 1;
       } else {
         currentIndex = index;
       }
-
       const img = galleryImages[currentIndex];
       modalImg.src = img.src;
       captionText.innerHTML = img.alt;
     }
 
-    // Otvorenie modalu po kliknutí na obrázok
+    // Kliknutie na náhľad
     galleryImages.forEach((img, index) => {
       img.addEventListener('click', function() {
         modal.style.display = "flex";
-        updateModal(index); // Nastaví správnu fotku
-        document.body.style.overflow = "hidden"; // Blokuje scroll
+        updateModal(index);
+        document.body.style.overflow = "hidden";
       });
     });
 
-    // Funkcia na ďalšiu/predchádzajúcu fotku
-    function nextSlide(e) {
-      if(e) e.stopPropagation(); // Aby sa nezavrel modal pri kliku na šípku
-      updateModal(currentIndex + 1);
-    }
+    // Navigácia
+    function nextSlide(e) { if(e) e.stopPropagation(); updateModal(currentIndex + 1); }
+    function prevSlide(e) { if(e) e.stopPropagation(); updateModal(currentIndex - 1); }
 
-    function prevSlide(e) {
-      if(e) e.stopPropagation();
-      updateModal(currentIndex - 1);
-    }
-
-    // Event listenery na tlačidlá
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    // Funkcia na zatvorenie
+    // Zavretie
     function closeModal() {
       modal.style.display = "none";
       document.body.style.overflow = "auto";
     }
-
     closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    // Kliknutie mimo obrázka (na pozadie)
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    // Klávesové skratky (ESC, Šípky)
-    document.addEventListener('keydown', function(e) {
+    // Klávesnica
+    document.addEventListener('keydown', (e) => {
       if (modal.style.display === "flex") {
         if (e.key === "Escape") closeModal();
         if (e.key === "ArrowRight") nextSlide();
         if (e.key === "ArrowLeft") prevSlide();
       }
     });
+
+    // --- SWIPE FUNKCIONALITA (PRE MOBIL) ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    // Zaznamenaj začiatok dotyku
+    modal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    // Zaznamenaj koniec dotyku a vyhodnoť
+    modal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+      // Minimálna vzdialenosť pre swipe (aby nereagovalo na klepnutie)
+      const threshold = 50; 
+      
+      if (touchEndX < touchStartX - threshold) {
+        // Potiahnutie doľava -> Ďalšia fotka
+        nextSlide();
+      }
+      
+      if (touchEndX > touchStartX + threshold) {
+        // Potiahnutie doprava -> Predchádzajúca fotka
+        prevSlide();
+      }
+    }
   </script>
 
 </body>
