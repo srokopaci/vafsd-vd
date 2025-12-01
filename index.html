@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="icon" href="/favicon.png" type="image/x-icon">
-  
   <link rel="icon" type="image/png" href="logo.png">
-
   <title>Zemné a výkopové práce Považská Bystrica</title>
-
-<meta name="description" content="Profesionálne zemné a výkopové práce v Považskej Bystrici a okolí. Realizujeme výkopy základov, terénne úpravy a prepravu materiálov. Kontaktujte nás pre nezáväznú cenovú ponuku.">
+  <meta name="description" content="Profesionálne zemné a výkopové práce v Považskej Bystrici a okolí.">
 
   <style>
     /* --- Root Variables & Base Styles --- */
@@ -42,63 +38,10 @@
     }
 
     a { text-decoration: none; color: inherit; }
-
-    /* Zobrazovanie podľa zariadenia */
     .desktop-only { display: block; }
     .mobile-only { display: none; }
 
-    /* Jednotná veľkosť ikon a centrovanie v krabičke 28×28 */
-    .social-icon-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      line-height: 0;
-      transform-origin: center;
-    }
-
-    /* Klikateľné kontaktné boxy (Telefón – mobil, Email, Adresa) */
-    .contact-item .phone-link,
-    .contact-item .gmail-link,
-    .contact-item .address-link {
-      display: inline-block;
-      color: inherit;
-      text-decoration: none;
-    }
-    .contact-item .phone-link:focus-visible,
-    .contact-item .gmail-link:focus-visible,
-    .contact-item .address-link:focus-visible {
-      outline: 2px solid var(--orange-500);
-      outline-offset: 4px;
-      border-radius: 0.75rem;
-    }
-    .contact-item .phone-link:hover .contact-icon-wrapper,
-    .contact-item .gmail-link:hover .contact-icon-wrapper,
-    .contact-item .address-link:hover .contact-icon-wrapper {
-      transform: scale(1.1);
-    }
-
-    /* SVG ikony škáluj na celú krabičku */
-    .social-icon-link svg { width: 100%; height: 100%; }
-
-    /* TikTok: výmena obrázka na hover */
-    .social-icon-link.tiktok-swap { position: relative; width: 28px; height: 28px; }
-    .social-icon-link.tiktok-swap .img-default,
-    .social-icon-link.tiktok-swap .img-hover {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: contain; -webkit-user-drag: none; user-select: none; pointer-events: none;
-    }
-    .social-icon-link.tiktok-swap .img-hover { display: none; }
-    .social-icon-link.tiktok-swap:hover .img-default,
-    .social-icon-link.tiktok-swap:focus-visible .img-default { display: none; }
-    .social-icon-link.tiktok-swap:hover .img-hover,
-    .social-icon-link.tiktok-swap:focus-visible .img-hover { display: block; }
-
-    /* --- Utility Classes --- */
     .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-
-    /* --- Keyframes for Animations --- */
     @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     /* --- Header --- */
@@ -109,15 +52,7 @@
     .logo-btn:hover { transform: scale(1.05); }
     .logo-obrazok { height: 5rem; width: auto; }
     .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--gray-800); transition: color 0.3s ease; }
-
-    @media (hover: hover) {
-      .logo-btn:hover .logo-text {
-        color: var(--orange-500);
-      }
-    }
-    .logo-btn:focus-visible .logo-text {
-      color: var(--orange-500);
-    }
+    .logo-btn:hover .logo-text { color: var(--orange-500); }
 
     .main-nav { display: none; }
     .main-nav a { color: var(--gray-600); transition: color 0.3s ease; }
@@ -125,7 +60,7 @@
     .cta-button { background-color: var(--orange-500); color: var(--white); padding: 0.5rem 1.5rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: all 0.3s ease; }
     .cta-button:hover { background-color: var(--orange-600); transform: scale(1.05); }
 
-    /* --- Hero Section --- */
+    /* --- Hero --- */
     .hero-section {
       position: relative;
       background: url('pozadie.jpg') center center / cover no-repeat;
@@ -136,39 +71,14 @@
     .hero-section h1 { font-size: 3.75rem; font-weight: 700; margin-bottom: 1.5rem; animation: fade-in 1s ease-out; }
     .hero-section p { font-size: 1.25rem; color: var(--gray-200); margin-bottom: 2rem; }
     .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
-
-    .hero-buttons .primary-btn,
-    .hero-buttons .secondary-btn {
-      background-color: var(--orange-500);
-      color: var(--white);
-      padding: 0.75rem 2rem;
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: none;
-      transition: all 0.3s ease;
+    .hero-buttons .primary-btn, .hero-buttons .secondary-btn {
+      background-color: var(--orange-500); color: var(--white); padding: 0.75rem 2rem; border-radius: 0.5rem; display: flex; align-items: center; gap: 0.5rem; border: none; transition: all 0.3s ease;
     }
-    .hero-buttons .primary-btn:hover,
-    .hero-buttons .secondary-btn:hover { background-color: var(--orange-600); transform: scale(1.05); }
-    .hero-buttons .primary-btn svg,
-    .hero-buttons .secondary-btn svg { width: 1.25rem; height: 1.25rem; }
+    .hero-buttons .primary-btn:hover, .hero-buttons .secondary-btn:hover { background-color: var(--orange-600); transform: scale(1.05); }
+    .hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 8rem; background: linear-gradient(to top, var(--gray-50), transparent); pointer-events: none; z-index: 1; }
 
-    .hero-fade {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 8rem;
-      background: linear-gradient(to top, var(--gray-50), transparent);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* --- Services & Shared Section Styles --- */
+    /* --- Services & General --- */
     .services-section { padding: 5rem 0; background-color: var(--white); }
-    
-    /* Spoločný štýl pre hlavičky sekcií */
     .section-header { text-align: center; margin-bottom: 3rem; }
     .section-header h2 { font-size: 2.25rem; font-weight: 700; color: var(--gray-800); margin-bottom: 1rem; display: inline-block; position: relative; }
     .section-header h2 .underline { position: absolute; bottom: -5px; left: 0; width: 100%; height: 4px; background-color: var(--orange-500); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
@@ -177,166 +87,91 @@
     
     .services-grid { display: grid; gap: 1.5rem; }
     .service-card { background-color: var(--gray-50); padding: 1.5rem; border-radius: 0.75rem; cursor: pointer; transition: all 0.3s ease; }
-    .service-card:hover { transform: translateY(-8px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
     .service-card .icon-wrapper { color: var(--orange-500); margin-bottom: 1rem; transition: transform 0.3s ease; }
-    .service-card .icon-wrapper svg { width: 2rem; height: 2rem; }
     .service-card:hover .icon-wrapper { transform: scale(1.1) rotate(3deg); }
-    .service-card h3 { font-size: 1.25rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.75rem; }
+    .service-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
     .service-card p { color: var(--gray-600); }
 
-    /* DVE POLIA S OBRÁZKAMI A POPISOM ("Naše stroje") */
-    .extra-offers { margin-top: 5rem; } /* Väčší odstup zhora, ako nová sekcia */
-    
-    /* ZMENA: .extra-title je odstránené, používa sa .section-header */
-    
+    /* --- Stroje --- */
+    .extra-offers { margin-top: 5rem; }
     .extra-grid { display: grid; gap: 1.5rem; }
-    .extra-item {
-      background-color: var(--gray-50);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-    .extra-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    }
-    .extra-figure {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      background-color: var(--gray-100);
-      display: block;
-    }
+    .extra-item { background-color: var(--gray-50); border-radius: 0.75rem; padding: 1rem; transition: transform 0.3s ease; text-align: center; }
+    .extra-item:hover { transform: translateY(-6px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+    .extra-figure { aspect-ratio: 16 / 9; width: 100%; border-radius: 0.5rem; overflow: hidden; background-color: var(--gray-100); display: block; }
     .extra-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .extra-item h3 { margin-top: 0.75rem; font-size: 1.25rem; font-weight: 600; color: var(--gray-800); }
-    .extra-item p { color: var(--gray-600); margin-top: 0.25rem; }
+    .extra-item h3 { margin-top: 0.75rem; font-size: 1.25rem; font-weight: 600; }
 
-    /* --- Why Choose Us Section --- */
+    /* --- Why Us --- */
     .why-us-section { padding: 5rem 0; background-color: var(--gray-100); }
-    .why-us-grid {
-      display: block;
-      text-align: center;
-    }
-    .why-us-section h2 { 
-      font-size: 2.25rem;
-      font-weight: 700; 
-      color: var(--gray-800); 
-      margin-bottom: 2.5rem;
-    }
-    .features-list {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      max-width: 100%;
-      text-align: left;
-    }
+    .why-us-grid { display: block; text-align: center; }
+    .features-list { display: inline-flex; flex-direction: column; gap: 1.25rem; text-align: left; }
     .feature-item { display: flex; align-items: flex-start; }
-    .feature-item svg { width: 1.5rem; height: 1.5rem; color: var(--green-500); margin-right: 1rem; margin-top: 0.25rem; flex-shrink: 0; transition: transform 0.3s ease; }
-    .feature-item:hover svg { transform: scale(1.1); }
-    .feature-item span { color: var(--gray-700); transition: color 0.3s ease; font-size: 1.125rem; }
-    .feature-item:hover span { color: var(--gray-900); }
+    .feature-item svg { width: 1.5rem; height: 1.5rem; color: var(--green-500); margin-right: 1rem; flex-shrink: 0; }
 
-    /* --- Gallery Section --- */
-    .gallery-section { padding: 5rem 0; background-color: var(--white); }
-    .gallery-grid { display: grid; gap: 1.5rem; }
+    /* --- Gallery Preview (Teaser) --- */
+    .gallery-preview-section { padding: 5rem 0; background-color: var(--white); text-align: center; }
+    .gallery-preview-grid { display: grid; gap: 1.5rem; margin-bottom: 2.5rem; }
     .gallery-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 0.75rem; }
     .gallery-item img { width: 100%; height: 16rem; object-fit: cover; display: block; transition: transform 0.3s ease; }
     .gallery-item:hover img { transform: scale(1.1); }
-    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 1rem; }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-overlay span { color: var(--white); font-weight: 600; }
-
-    /* --- Contact Section --- */
-    .contact-section { padding: 5rem 0; background-color: var(--gray-900); color: var(--white); }
-    .contact-section .section-header p { color: var(--gray-400); }
-    .contact-section .section-header h2 { color: var(--orange-500); }
-    .contact-grid { display: grid; gap: 2rem; max-width: 56rem; margin: 0 auto; }
-    .contact-item { text-align: center; }
-    .contact-icon-wrapper {
-      background-color: var(--orange-500); border-radius: 9999px; width: 4rem; height: 4rem;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: transform 0.3s ease;
-    }
-    .contact-item:hover .contact-icon-wrapper { transform: scale(1.1); }
-    .contact-icon-wrapper svg { width: 2rem; height: 2rem; }
-    .contact-item h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .contact-item p { color: var(--gray-400); }
-
-    .working-hours { margin-top: 3rem; text-align: center; display: flex; align-items: center; justify-content: center; color: var(--gray-400); }
-    .working-hours svg { width: 1.25rem; height: 1.25rem; margin-right: 0.5rem; }
-
-    .social-icons { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2rem; }
-    .social-icon-link { color: var(--gray-400); transition: all 0.3s ease; }
-    .social-icon-link:hover { color: var(--white); transform: scale(1.15); }
-    .social-icon-link svg { width: 1.75rem; height: 1.75rem; }
-
-    .footer { background-color: var(--gray-950); color: var(--gray-400); padding: 2rem 0; text-align: center; }
-    .footer p { margin: 0; }
-
-    .map-embed { margin-top: 1rem; width: 100%; aspect-ratio: 16 / 9; border-radius: 0.75rem; overflow: hidden; }
-    .map-embed iframe { width: 100%; height: 100%; border: 0; }
-    .map-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: .5rem; color: var(--orange-500); text-decoration: underline; }
-    .map-link:hover { color: var(--orange-600); }
-
-    .call-fab {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 70;
-      width: 56px; height: 56px;
-      border-radius: 9999px;
+    
+    .view-all-btn {
+      display: inline-block;
       background-color: var(--orange-500);
       color: var(--white);
-      display: none;
-      align-items: center; justify-content: center;
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-      transition: transform .15s ease, background-color .2s ease;
+      font-size: 1.125rem;
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .call-fab:hover { background-color: var(--orange-600); transform: translateY(-1px); }
-    .call-fab:active { transform: scale(.96); }
-    .call-fab svg { width: 28px; height: 28px; }
+    .view-all-btn:hover { background-color: var(--orange-600); transform: translateY(-2px); }
 
-    /* --- Responsive Design --- */
+    /* --- Contact --- */
+    .contact-section { padding: 5rem 0; background-color: var(--gray-900); color: var(--white); }
+    .contact-section .section-header h2 { color: var(--orange-500); }
+    .contact-section .section-header p { color: var(--gray-400); }
+    .contact-grid { display: grid; gap: 2rem; max-width: 56rem; margin: 0 auto; }
+    .contact-item { text-align: center; }
+    .contact-icon-wrapper { background-color: var(--orange-500); border-radius: 9999px; width: 4rem; height: 4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: transform 0.3s ease; }
+    .contact-item:hover .contact-icon-wrapper { transform: scale(1.1); }
+    .contact-item h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .contact-item p, .contact-item a { color: var(--gray-400); }
+    .working-hours { margin-top: 3rem; text-align: center; display: flex; align-items: center; justify-content: center; color: var(--gray-400); }
+    .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+    .social-icon-link { color: var(--gray-400); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+    .social-icon-link:hover { color: var(--white); transform: scale(1.15); }
+    .map-embed { margin-top: 1rem; width: 100%; aspect-ratio: 16 / 9; border-radius: 0.75rem; overflow: hidden; }
+    .map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+    /* TikTok Swap */
+    .social-icon-link.tiktok-swap { position: relative; }
+    .social-icon-link.tiktok-swap .img-hover { display: none; position: absolute; inset: 0; width: 100%; height: 100%; }
+    .social-icon-link.tiktok-swap:hover .img-default { display: none; }
+    .social-icon-link.tiktok-swap:hover .img-hover { display: block; }
+
+    .footer { background-color: var(--gray-950); color: var(--gray-400); padding: 2rem 0; text-align: center; }
+    
+    .call-fab { position: fixed; right: 16px; bottom: 16px; z-index: 70; width: 56px; height: 56px; border-radius: 9999px; background-color: var(--orange-500); color: var(--white); display: none; align-items: center; justify-content: center; }
+    
+    /* Media Queries */
     @media (min-width: 768px) {
       .main-nav { display: flex; gap: 2rem; }
-      .hero-section h1 { font-size: 3.75rem; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .extra-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-preview-grid { grid-template-columns: repeat(3, 1fr); } 
       .contact-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (min-width: 1024px) {
       .services-grid { grid-template-columns: repeat(4, 1fr); }
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 767px) {
       .desktop-only { display: none; }
       .mobile-only { display: block; }
-
-      .hero-section { padding: 4.5rem 0; }
-      .hero-section h1 { font-size: 2rem; line-height: 1.2; }
-      .hero-section p { font-size: 1rem; }
-      .hero-buttons a { width: 100%; justify-content: center; }
-
-      .services-grid,
-      .gallery-grid,
-      .contact-grid,
-      .extra-grid { grid-template-columns: 1fr; }
-      
-      .why-us-section h2,
-      .section-header h2 { font-size: 1.875rem; }
-
-      .gallery-item img { height: 12rem; }
-      .contact-icon-wrapper { width: 3.5rem; height: 3.5rem; }
+      .hero-section h1 { font-size: 2rem; }
+      .gallery-preview-grid { grid-template-columns: 1fr; } /* Na mobile 1 stĺpec */
       .call-fab { display: flex; }
-    }
-
-    @media (hover: none) {
-      .social-icon-link:hover { transform: none; }
-      .service-card:hover { transform: none; box-shadow: none; }
-      .contact-item:hover .contact-icon-wrapper { transform: none; }
     }
   </style>
 </head>
@@ -351,7 +186,8 @@
         </a>
         <nav class="main-nav">
           <a href="#services">Služby</a>
-          <a href="#gallery">Galéria</a>
+          <!-- ZMENA: Odkaz priamo na galeria.html -->
+          <a href="galeria.html">Galéria</a>
           <a href="#contact">Kontakt</a>
         </nav>
         <a href="#contact" class="cta-button">Získať ponuku</a>
@@ -369,7 +205,8 @@
             Nezáväzná cenová ponuka
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
-          <a href="#gallery" class="secondary-btn">Naše referencie</a>
+          <!-- ZMENA: Tlačidlo smeruje na galériu -->
+          <a href="galeria.html" class="secondary-btn">Naše referencie</a>
         </div>
       </div>
       <div class="hero-fade"></div>
@@ -413,7 +250,6 @@
           </div>
         </div>
 
-        <!-- ZMENA: Nadpis "Naše stroje" je teraz v štandardnej hlavičke sekcie -->
         <div class="extra-offers">
           <div class="section-header">
             <h2>Naše stroje</h2>
@@ -456,56 +292,39 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 <span>Dodržiavanie termínov a rozpočtu</span>
               </div>
-              <div class="feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                <span>Pracujeme aj cez sviatky a víkendy</span>
-              </div>
-              <div class="feature-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                <span>Flexibilita podľa potrieb zákazníka</span>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
+    <!-- ZMENA: Toto je už len "Teaser" sekcia, ktorá láka na kliknutie -->
+    <section class="gallery-preview-section">
       <div class="container">
         <div class="section-header">
           <h2>Naše práce</h2>
+          <p>Pozrite si výber z našich realizácií.</p>
         </div>
-        <div class="gallery-grid">
+        <!-- Zobrazíme len 3 fotky ako ukážku, aby stránka nebola prázdna -->
+        <div class="gallery-preview-grid">
           <div class="gallery-item">
             <img src="zaklady.jpg" alt="Výkop základov">
-            <div class="gallery-overlay"><span>Výkop základov</span></div>
           </div>
           <div class="gallery-item">
             <img src="rovnanie.jpg" alt="Rovnanie pozemku">
-            <div class="gallery-overlay"><span>Rovnanie pozemku</span></div>
           </div>
           <div class="gallery-item">
             <img src="teren.jpg" alt="Práca v teréne">
-            <div class="gallery-overlay"><span>Práca v teréne</span></div>
-          </div>
-          <div class="gallery-item">
-            <img src="akcia.JPG" alt="Trhanie koreňov">
-            <div class="gallery-overlay"><span>Trhanie koreňov</span></div>
-          </div>
-          <div class="gallery-item">
-            <img src="projekt.JPEG" alt="Základ plotu">
-            <div class="gallery-overlay"><span>Základ plotu</span></div>
-          </div>
-          <div class="gallery-item">
-            <img src="presny.JPEG" alt="Hĺbkové výkopy">
-            <div class="gallery-overlay"><span>Hĺbkové výkopy</span></div>
           </div>
         </div>
+        
+        <!-- Tlačidlo, ktoré otvorí galeria.html -->
+        <a href="galeria.html" class="view-all-btn">
+          Zobraziť celú galériu
+        </a>
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
       <div class="container">
         <div class="section-header">
@@ -523,7 +342,7 @@
           </div>
 
           <div class="contact-item mobile-only">
-            <a href="tel:+421948060441" class="phone-link" aria-label="Zavolať na +421 948 060 441" title="Zavolať">
+            <a href="tel:+421948060441" class="phone-link">
               <div class="contact-icon-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
@@ -533,21 +352,20 @@
           </div>
 
           <div class="contact-item">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=srokopaci@gmail.com" target="_blank" rel="noopener noreferrer" class="gmail-link" aria-label="Napísať e‑mail do Gmailu na srokopaci@gmail.com" title="Otvoriť Gmail a napísať e‑mail">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=srokopaci@gmail.com" target="_blank" rel="noopener noreferrer" class="gmail-link">
               <div class="contact-icon-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               </div>
               <h3>Email</h3>
               <p>srokopaci@gmail.com</p>
             </a>
-            <div class="map-embed" aria-label="Mapa – 49.164362, 18.397477">
+            <div class="map-embed">
               <iframe src="https://www.google.com/maps?q=49.164362,18.397477&hl=sk&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
             </div>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=49.164362,18.397477" target="_blank" rel="noopener noreferrer">Zobraziť na Mapách Google</a>
           </div>
 
           <div class="contact-item">
-            <a href="https://www.google.com/maps/search/?api=1&query=49.164362,18.397477" target="_blank" rel="noopener noreferrer" class="address-link" aria-label="Otvoriť adresu v Mapách Google (49.164362, 18.397477)" title="Otvoriť v Mapách Google">
+            <a href="https://www.google.com/maps/search/?api=1&query=49.164362,18.397477" target="_blank" rel="noopener noreferrer" class="address-link">
               <div class="contact-icon-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
@@ -563,14 +381,14 @@
         </div>
 
         <div class="social-icons">
-          <a href="https://www.instagram.com/kopaciii/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <a href="https://www.instagram.com/kopaciii/" target="_blank" class="social-icon-link">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
           </a>
-          <a href="https://www.tiktok.com/@kopaciii" target="_blank" rel="noopener noreferrer" class="social-icon-link tiktok-swap" aria-label="TikTok">
-            <img src="tiktok.png" alt="TikTok logo" class="img-default" draggable="false">
-            <img src="tiktik.png" alt="TikTok logo (hover)" class="img-hover" aria-hidden="true" draggable="false">
+          <a href="https://www.tiktok.com/@kopaciii" target="_blank" class="social-icon-link tiktok-swap">
+            <img src="tiktok.png" alt="TikTok" class="img-default">
+            <img src="tiktik.png" alt="TikTok Hover" class="img-hover">
           </a>
-          <a href="https://www.youtube.com/channel/UCX-EHbDDMPI9ttH09uzy02g" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="YouTube">
+          <a href="https://www.youtube.com/channel/UCX-EHbDDMPI9ttH09uzy02g" target="_blank" class="social-icon-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
           </a>
         </div>
@@ -578,10 +396,8 @@
     </section>
   </main>
 
-  <a href="tel:+421948060441" class="call-fab mobile-only" aria-label="Zavolať teraz" title="Zavolať teraz">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-    </svg>
+  <a href="tel:+421948060441" class="call-fab mobile-only">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
   </a>
 
   <footer class="footer">
@@ -591,24 +407,16 @@
   </footer>
 
   <script>
+    /* Jednoduchý script na scroll ak je to id na rovnakej strane */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault(); 
         const targetId = this.getAttribute('href');
-        if (targetId === '#') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
+        if (targetId === '#') return;
         const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
       });
     });
   </script>
 </body>
 </html>
-
-
-
-
