@@ -85,10 +85,23 @@
       object-fit: contain;
       border-radius: 5px;
       box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-      animation: zoomIn 0.3s ease-out;
-      /* Zakážeme predvolené správanie pre drag obrázkov, aby fungoval swipe */
+      
+      /* ZMENA 1: Pridaný transition pre opacity pre hladký prechod */
+      transition: opacity 0.3s ease-in-out;
+      opacity: 1;
+
       user-select: none;
       -webkit-user-drag: none;
+    }
+
+    /* ZMENA 2: Trieda, ktorá sa pridá, keď sa fotka mení (skryje ju) */
+    .modal-content.fade-out {
+      opacity: 0;
+    }
+
+    /* Animácia len pre prvé otvorenie okna */
+    .zoom-anim {
+      animation: zoomIn 0.3s ease-out;
     }
 
     @keyframes zoomIn {
@@ -185,7 +198,7 @@
       </div>
 
       <div class="gallery-grid">
-        <!-- Tu sú tvoje fotky -->
+        <!-- Tvoje fotky (ponechal som pôvodné názvy) -->
         <div class="gallery-item">
           <img src="zaklady.jpg" alt="" loading="lazy">
           <div class="gallery-overlay"><span></span></div>
@@ -269,8 +282,8 @@
     
     let currentIndex = 0;
 
-    // Funkcia pre update obrázka
-    function updateModal(index) {
+    // ZMENA 3: Funkcia pre zmenu zdroja obrázka
+    function setModalImageSource(index) {
       if (index >= galleryImages.length) {
         currentIndex = 0;
       } else if (index < 0) {
@@ -283,18 +296,56 @@
       captionText.innerHTML = img.alt;
     }
 
-    // Kliknutie na náhľad
+    // ZMENA 4: Hlavná funkcia updateModal s logikou prechodu
+    // Parameter 'animate' určuje, či chceme fade efekt (pri navigácii) alebo nie (pri prvom otvorení)
+    function updateModal(index, animate = true) {
+      if (animate) {
+        // 1. Spustíme fade-out
+        modalImg.classList.add('fade-out');
+
+        // 2. Počkáme 300ms (zhoduje sa s CSS transition), potom vymeníme zdroj
+        setTimeout(() => {
+          setModalImageSource(index);
+          
+          // 3. Keď je zdroj vymenený, odstránime fade-out (obrázok sa zjaví)
+          // Použijeme krátky timeout alebo onload, aby sme mali istotu, že prehliadač zaregistroval zmenu
+          modalImg.onload = () => {
+             modalImg.classList.remove('fade-out');
+          };
+          // Fallback pre prípad, že je obrázok v cache a onload by nezbehol správne
+          setTimeout(() => { modalImg.classList.remove('fade-out'); }, 50);
+
+        }, 300); 
+
+      } else {
+        // Ak nechceme animáciu (prvé otvorenie), vymeníme hneď
+        setModalImageSource(index);
+        modalImg.classList.remove('fade-out');
+      }
+    }
+
+    // Kliknutie na náhľad - Otvorenie modalu
     galleryImages.forEach((img, index) => {
       img.addEventListener('click', function() {
         modal.style.display = "flex";
-        updateModal(index);
+        modalImg.classList.add('zoom-anim'); // Pridáme animáciu len pri otvorení
+        updateModal(index, false); // False = okamžité zobrazenie bez čakania na fade-out
         document.body.style.overflow = "hidden";
       });
     });
 
-    // Navigácia
-    function nextSlide(e) { if(e) e.stopPropagation(); updateModal(currentIndex + 1); }
-    function prevSlide(e) { if(e) e.stopPropagation(); updateModal(currentIndex - 1); }
+    // Navigácia (tu používame animáciu prechodu)
+    function nextSlide(e) { 
+      if(e) e.stopPropagation(); 
+      modalImg.classList.remove('zoom-anim'); // Odstránime zoom animáciu, aby neblbla pri prepínaní
+      updateModal(currentIndex + 1, true); // True = zapni fade efekt
+    }
+    
+    function prevSlide(e) { 
+      if(e) e.stopPropagation(); 
+      modalImg.classList.remove('zoom-anim');
+      updateModal(currentIndex - 1, true); 
+    }
 
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
@@ -302,6 +353,8 @@
     // Zavretie
     function closeModal() {
       modal.style.display = "none";
+      modalImg.classList.remove('zoom-anim');
+      modalImg.classList.remove('fade-out');
       document.body.style.overflow = "auto";
     }
     closeBtn.addEventListener('click', closeModal);
@@ -320,28 +373,21 @@
     let touchStartX = 0;
     let touchEndX = 0;
 
-    // Zaznamenaj začiatok dotyku
     modal.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, {passive: true});
 
-    // Zaznamenaj koniec dotyku a vyhodnoť
     modal.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
     }, {passive: true});
 
     function handleSwipe() {
-      // Minimálna vzdialenosť pre swipe (aby nereagovalo na klepnutie)
       const threshold = 50; 
-      
       if (touchEndX < touchStartX - threshold) {
-        // Potiahnutie doľava -> Ďalšia fotka
         nextSlide();
       }
-      
       if (touchEndX > touchStartX + threshold) {
-        // Potiahnutie doprava -> Predchádzajúca fotka
         prevSlide();
       }
     }
